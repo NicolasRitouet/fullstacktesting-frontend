@@ -5,12 +5,20 @@ node_js:
   - 6
 services:
   - docker
+env:
+  global:
+    - DBUS_SESSION_BUS_ADDRESS=/dev/null
+    - DISPLAY=:99.0
+    - CHROME_BIN=chromium-browser
+before_script:
+  - sh -e /etc/init.d/xvfb start
 install:
   - npm install
 script:
   - npm run lint
   - npm run test:once
   - npm start &
-  - wget --retry-connrefused --no-check-certificate -T 30  http://localhost:4200 -O /dev/null
+  - wget --retry-connrefused --no-check-certificate -T 10  http://localhost:4200 -O /dev/null
   - docker run -d --name grid --net host -e SELENIUM_HUB_PORT=4444 -v /dev/shm:/dev/shm elgalu/selenium:latest
+  - wget --retry-connrefused --no-check-certificate -T 30  http://localhost:4444/grid/console -O /dev/null
   - npm run e2e
