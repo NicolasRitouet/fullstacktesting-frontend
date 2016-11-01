@@ -1,4 +1,13 @@
-# FullstacktestingFrontend
+# Fullstacktesting - Frontend
+
+> The purpose of this project is to collaborate on best practices with modern test tools.
+
+This example is based on a frontend (built with angular2) and a backend (built with koa2).
+Docker and docker-compose are used to bootstrap the environment and test with all different components.
+Some tools we use:
+- docker-selenium
+- postgresql
+
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
 
