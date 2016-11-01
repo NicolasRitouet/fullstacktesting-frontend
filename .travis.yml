@@ -3,19 +3,14 @@ sudo: required
 language: node_js
 node_js:
   - 6
-os:
-  - linux
-env:
-  global:
-    - DBUS_SESSION_BUS_ADDRESS=/dev/null
-    - DISPLAY=:99.0
-    - CHROME_BIN=chromium-browser
-before_script:
-  - sh -e /etc/init.d/xvfb start
+services:
+  - docker
 install:
   - npm install
 script:
   - npm run lint
   - npm run test:once
   - npm start &
+  - wget --retry-connrefused --no-check-certificate -T 30  http://localhost:4200 -O /dev/null
+  - docker run -d --name grid --net host -e SELENIUM_HUB_PORT=4444 -v /dev/shm:/dev/shm elgalu/selenium:latest
   - npm run e2e
