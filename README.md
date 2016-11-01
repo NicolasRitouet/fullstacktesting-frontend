@@ -1,4 +1,4 @@
-# Fullstacktesting - Frontend
+# Fullstacktesting - Frontend [![Build Status](https://travis-ci.org/NicolasRitouet/fullstacktesting-frontend.svg?branch=master)](https://travis-ci.org/NicolasRitouet/fullstacktesting-frontend)
 
 > The purpose of this project is to collaborate on best practices with modern test tools.
 
